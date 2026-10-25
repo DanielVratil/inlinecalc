@@ -1,6 +1,7 @@
 package com.danielvratil.inlinecalc.statusBar
 
 import com.danielvratil.inlinecalc.InlineCalcBundle
+import com.danielvratil.inlinecalc.InlineCalcIcons
 import com.intellij.ide.IdeTooltip
 import com.intellij.ide.IdeTooltipManager
 import com.intellij.openapi.ide.CopyPasteManager
@@ -22,6 +23,7 @@ import java.awt.event.MouseEvent
 class ResultLabel(private val valueProvider: () -> String?) : JBLabel() {
 
     init {
+        icon = InlineCalcIcons.Calc
         border = JBUI.Borders.empty(0, 6)
         isVisible = false
 

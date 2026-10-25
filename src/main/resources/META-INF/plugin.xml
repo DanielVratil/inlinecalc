@@ -23,7 +23,8 @@
     <actions>
         <!-- No default shortcut; users can assign one in Settings | Keymap -->
         <action id="InlineCalc.CopyResult"
-                class="com.danielvratil.inlinecalc.actions.CopyResultAction"/>
+                class="com.danielvratil.inlinecalc.actions.CopyResultAction"
+                icon="com.danielvratil.inlinecalc.InlineCalcIcons.Calc"/>
     </actions>
 
     <extensions defaultExtensionNs="com.danielvratil.inlinecalc">
