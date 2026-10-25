@@ -1,0 +1,43 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.danielvratil.inlinecalc</id>
+    <name>Inline Calc</name>
+    <vendor>Daniel Vrátil</vendor>
+    <description><![CDATA[
+        <p>Evaluates the selected text as a math expression and shows the result in the status bar.</p>
+        <p>Click the result to copy it. Output format and ignored input characters are configurable in
+        <i>Settings | Tools | Inline Calc</i>.</p>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends optional="true" config-file="inlinecalc-withGrid.xml">intellij.grid.core.plugin</depends>
+
+    <extensionPoints>
+        <extensionPoint name="selectionSource"
+                        interface="com.danielvratil.inlinecalc.statusBar.SelectionSource"
+                        dynamic="true"/>
+    </extensionPoints>
+
+    <resource-bundle>messages.InlineCalcBundle</resource-bundle>
+
+    <actions>
+        <!-- No default shortcut; users can assign one in Settings | Keymap -->
+        <action id="InlineCalc.CopyResult"
+                class="com.danielvratil.inlinecalc.actions.CopyResultAction"/>
+    </actions>
+
+    <extensions defaultExtensionNs="com.danielvratil.inlinecalc">
+        <selectionSource implementation="com.danielvratil.inlinecalc.statusBar.EditorSelectionSource"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <statusBarWidgetFactory id="InlineCalc.ResultWidget"
+                                implementation="com.danielvratil.inlinecalc.statusBar.ExpressionResultWidgetFactory"
+                                order="first"/>
+        <applicationConfigurable parentId="tools"
+                                 id="com.danielvratil.inlinecalc.settings"
+                                 instance="com.danielvratil.inlinecalc.settings.InlineCalcConfigurable"
+                                 bundle="messages.InlineCalcBundle"
+                                 key="settings.display.name"/>
+    </extensions>
+</idea-plugin>
