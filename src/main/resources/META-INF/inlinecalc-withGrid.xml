@@ -1,0 +1,6 @@
+<!-- Loaded only when the Grid Core plugin (table view of CSV files, database results) is present. -->
+<idea-plugin>
+    <extensions defaultExtensionNs="com.danielvratil.inlinecalc">
+        <selectionSource implementation="com.danielvratil.inlinecalc.grid.GridSelectionSource"/>
+    </extensions>
+</idea-plugin>
